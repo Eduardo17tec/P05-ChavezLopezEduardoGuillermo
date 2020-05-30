@@ -4,73 +4,140 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Mascotas</h2>
+<div class="row justify-content-center m-3">
+    <h5 class="m-0 text-dark">
+        Mis mascotas
+    </h5>
+</div>
+<hr />
+<p class="m-4">
+    <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <span class="text-white-50"><i class="fas fa-plus-circle"></i></span>
+        <span class="text-white">Añadir nueva mascota</span>
+    </a>
+</p>
 
-<a href="@Url.Action("Create","Pets")" class="btn btn-sm btn-success">
-    <span class="text-white-50"><i class="fas fa-plus-circle"></i></span>
-    <span class="text-white">Añadir nueva mascota</span>
-</a>
-<table class="table table-dark">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PetType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Race)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Height)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center m-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="@Url.Action("Details", "Pets", new { id = item.Id})">
+                <div class="card border-left-primary shadow h-100 py-2 bg-dark">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs text-white text-uppercase mb-1">@item.Name</div>
+                                <div class="h5 mb-0 font-weight-bold text-white">@item.PetType</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-paw fa-2x text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PetType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Race)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Height)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        
+        <div class="modal-content">
+            <div class="modal-title bg-dark">
+                <h6 class="text-white text-center">Nueva Mascota</h6>
+            </div>
+            <div class="modal-body">
+                <form action="@Url.Action("Create","Pets")" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Nombre</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Name" value="" placeholder="Nombre de la Mascota" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-6">Tipo de Mascota</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="PetType" value="" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-</table>
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-12">Edad</label>
+                                <div class="col-md-10">
+                                    <input type="number" name="Age" value="" placeholder="0" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-6">Fecha de Nacimiento</label>
+                                <div class="col-md-10">
+                                    <input type="date" name="BirthDate" value="" class="form-control" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Color</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Color" value="" placeholder="Escriba el Color de su Mascota" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Raza</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Raza" value="" placeholder="Escriba la Raza de su Mascota" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Peso</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Weight" value="" placeholder="0.0" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-12">Altura</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Height" value="" placeholder="0.0" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        Fotografia
+                        <div class="col-md-10">
+                            <input type="file" name="hpb" value="" class="form-control-file" />
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <button class="btn btn-success btn-sm" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

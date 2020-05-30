@@ -210,6 +210,14 @@
     <Compile Include="Migrations\202005202341066_UpdatePets.Designer.cs">
       <DependentUpon>202005202341066_UpdatePets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005262036462_Add-foreingpet.cs" />
+    <Compile Include="Migrations\202005262036462_Add-foreingpet.Designer.cs">
+      <DependentUpon>202005262036462_Add-foreingpet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005262200567_UpdateOwner.cs" />
+    <Compile Include="Migrations\202005262200567_UpdateOwner.Designer.cs">
+      <DependentUpon>202005262200567_UpdateOwner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Consult.cs" />
@@ -234,10 +242,12 @@
     <Content Include="Content\img\Erizo.jpg" />
     <Content Include="Content\img\MejorAtencion.jpg" />
     <Content Include="Content\img\MiFoto.jpg" />
+    <Content Include="Content\img\Niebla.jpg" />
     <Content Include="Content\img\Perico.jpg" />
     <Content Include="Content\img\Pollito.jpg" />
     <Content Include="Content\img\Pugsito.jpg" />
     <Content Include="Content\img\TodoMascota.jpg" />
+    <Content Include="Content\img\UserUnknown.jpg" />
     <Content Include="Content\img\ZorritoBlanco.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -397,7 +407,6 @@
     <Content Include="Views\Consults\Details.cshtml" />
     <Content Include="Views\Consults\Edit.cshtml" />
     <Content Include="Views\Consults\Index.cshtml" />
-    <Content Include="Views\Pets\Create.cshtml" />
     <Content Include="Views\Pets\Delete.cshtml" />
     <Content Include="Views\Pets\Details.cshtml" />
     <Content Include="Views\Pets\Edit.cshtml" />
@@ -412,6 +421,7 @@
     <Content Include="Views\Owners\Details.cshtml" />
     <Content Include="Views\Owners\Edit.cshtml" />
     <Content Include="Views\Owners\Index.cshtml" />
+    <Content Include="Views\Pets\AllPets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -439,6 +449,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005202341066_UpdatePets.resx">
       <DependentUpon>202005202341066_UpdatePets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005262036462_Add-foreingpet.resx">
+      <DependentUpon>202005262036462_Add-foreingpet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005262200567_UpdateOwner.resx">
+      <DependentUpon>202005262200567_UpdateOwner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
